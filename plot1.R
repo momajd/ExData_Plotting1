@@ -15,6 +15,3 @@ df$Time <- strptime(paste(df$Date, df$Time), format = "%Y-%m-%d %H:%M:%S")
 # Plot 1 
 hist(df$Global_active_power, col="red", main="Global Active Power", 
      xlab="Global Active Power (kilowatts)")
-
-# Plot 2 
-with(df, plot(Time, Global_active_power, type="l", ylab = "Global Active Power (kilowatts)"))
