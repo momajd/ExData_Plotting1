@@ -7,5 +7,7 @@ df <- df[df$Date == "2007-02-01" | df$Date == "2007-02-02", ]
 # convert time after removing rows for efficiency
 df$Time <- strptime(paste(df$Date, df$Time), format = "%Y-%m-%d %H:%M:%S")
 
-# Plot 2 
+# Plot 2
+png(filename = "plot2.png", width=480, height=480)
 with(df, plot(Time, Global_active_power, type="l", xlab="", ylab = "Global Active Power (kilowatts)"))
+dev.off()

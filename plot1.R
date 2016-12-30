@@ -13,5 +13,7 @@ df <- df[df$Date == "2007-02-01" | df$Date == "2007-02-02", ]
 df$Time <- strptime(paste(df$Date, df$Time), format = "%Y-%m-%d %H:%M:%S")
 
 # Plot 1 
+png(filename="plot1.png", width = 480, height = 480)
 hist(df$Global_active_power, col="red", main="Global Active Power", 
      xlab="Global Active Power (kilowatts)")
+dev.off()

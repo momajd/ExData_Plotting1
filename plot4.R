@@ -8,15 +8,23 @@ df <- df[df$Date == "2007-02-01" | df$Date == "2007-02-02", ]
 df$Time <- strptime(paste(df$Date, df$Time), format = "%Y-%m-%d %H:%M:%S")
 
 # Plot 4 
-par(mfrow=c(2, 2), cex=0.6, mar=c(5, 4, 4, 2) + 0.1)
+png(filename = "plot4.png", width=480, height=480)
+par(mfrow=c(2, 2), cex=0.6)
+
+# 1 of 4
 with(df, plot(Time, Global_active_power, type="l", xlab="", ylab = "Global Active Power"))
 
+# 2 of 4
 with(df, plot(Time, Voltage, type="l", xlab="datetime"), fin=c(2, 2))
 
+# 3 of 4
 with(df, plot(Time, Sub_metering_1, type="l", xlab="", ylab="Energy sub metering") )
 with(df, points(Time, Sub_metering_2, type="l", col="red"))
 with(df, points(Time, Sub_metering_3, type="l", col="blue"))
 legend("topright", col=c("black", "red", "blue"), bty="n", lty=1, 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
+# 4 of 4
 with(df, plot(Time, Global_reactive_power, type="l", xlab="datetime"))
+
+dev.off()

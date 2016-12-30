@@ -8,7 +8,8 @@ df <- df[df$Date == "2007-02-01" | df$Date == "2007-02-02", ]
 df$Time <- strptime(paste(df$Date, df$Time), format = "%Y-%m-%d %H:%M:%S")
 
 # Plot 3
-par(cex=0.75, fin = c(4.5, 4.5))
+png(filename = "plot3.png", width=480, height=480)
+par(cex=0.75)
 with(df, plot(Time, Sub_metering_1, type="l", ylab="Energy sub metering", xlab=""))
 with(df, points(Time, Sub_metering_2, type="l", col="red"))
 with(df, points(Time, Sub_metering_3, type="l", col="blue"))
